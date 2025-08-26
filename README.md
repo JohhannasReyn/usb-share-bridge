@@ -6,8 +6,13 @@ A comprehensive USB storage bridge system that enables multiple computers to sim
 
 # Key Packages That Need To Be Included: 
 
-LVGL - `lvgl` - download and unzip the LVGL Gui library <available here: `https://github.com/lvgl/lvgl`> to the following folder, "usb-share-bridge/lvgl/<lvgl library files>"
-Nlohmann - `nlohmann`  - download and unzip the nlohmann json library <available here: `https://github.com/nlohmann/json`> to the following folder, "usb-share-bridge/include/nlohmann/<nlohmann package files>"
+### LVGL
+
+`lvgl` - download and unzip the LVGL Gui library <available here: `https://github.com/lvgl/lvgl`> to the following folder, "usb-share-bridge/lvgl/<lvgl library files>"
+
+### Nlohmann/json
+
+`nlohmann`  - download and unzip the nlohmann json library <available here: `https://github.com/nlohmann/json`> to the following folder, "usb-share-bridge/include/nlohmann/<nlohmann package files>"
 
 ***Make special note of the directory structure that is specified above as the project files use these paths to reference the files inside of these packages.***
 
@@ -878,3 +883,4 @@ usb-share-bridge/
 ├── platformio.ini                    // PlatformIO config
 
 └── README.md
+
