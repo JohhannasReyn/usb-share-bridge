@@ -4,6 +4,13 @@ This project has been designed, built, and deployed entirely by myself, Johhanna
 
 A comprehensive USB storage bridge system that enables multiple computers to simultaneously access external USB storage devices through USB connections and network sharing. Built specifically for the BigTechTree Pi V1.2.1 with integrated 4.0" TFT touchscreen interface.
 
+# Key Packages That Need To Be Included: 
+
+LVGL - `lvgl` - download and unzip the LVGL Gui library <available here: `https://github.com/lvgl/lvgl`> to the following folder, "usb-share-bridge/lvgl/<lvgl library files>"
+Nlohmann - `nlohmann`  - download and unzip the nlohmann json library <available here: `https://github.com/nlohmann/json`> to the following folder, "usb-share-bridge/include/nlohmann/<nlohmann package files>"
+
+***Make special note of the directory structure that is specified above as the project files use these paths to reference the files inside of these packages.***
+
 ## Features
 
 ### Core Functionality
@@ -869,4 +876,5 @@ usb-share-bridge/
 │   └── [submodule or lib]
 ├── CMakeLists.txt                    // Build system
 ├── platformio.ini                    // PlatformIO config
+
 └── README.md
