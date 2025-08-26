@@ -1,0 +1,44 @@
+{
+  "ui": {
+    "theme": "default",
+    "color_scheme": "blue",
+    "font_size": "medium",
+    "animation_speed": "normal",
+    "touch_sensitivity": 5
+  },
+  "screens": {
+    "home": {
+      "show_status": true,
+      "show_quick_actions": true,
+      "auto_refresh": true
+    },
+    "file_explorer": {
+      "view_mode": "list",
+      "show_hidden": false,
+      "sort_by": "name",
+      "sort_order": "ascending",
+      "thumbnail_size": "medium"
+    },
+    "logs": {
+      "max_entries": 100,
+      "auto_refresh": true,
+      "refresh_interval": 5,
+      "default_filter": "all"
+    },
+    "settings": {
+      "confirm_changes": true,
+      "auto_save": false
+    },
+    "network": {
+      "show_passwords": false,
+      "auto_scan": true,
+      "scan_interval": 30
+    }
+  },
+  "notifications": {
+    "enabled": true,
+    "duration": 3,
+    "position": "top_right",
+    "sound": false
+  }
+}

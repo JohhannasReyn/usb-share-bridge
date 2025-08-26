@@ -1,0 +1,53 @@
+{
+  "network": {
+    "enabled": false,
+    "auto_start": false,
+    "interface_priority": ["wlan0", "eth0"]
+  },
+  "wifi": {
+    "enabled": true,
+    "auto_connect": true,
+    "scan_interval": 30,
+    "connection_timeout": 30,
+    "saved_networks": []
+  },
+  "ethernet": {
+    "enabled": true,
+    "dhcp": true,
+    "static_ip": "",
+    "subnet_mask": "",
+    "gateway": "",
+    "dns_servers": ["8.8.8.8", "8.8.4.4"]
+  },
+  "services": {
+    "smb": {
+      "enabled": true,
+      "port": 445,
+      "workgroup": "WORKGROUP",
+      "server_name": "USB-BRIDGE",
+      "share_name": "USB_SHARE",
+      "read_only": false,
+      "guest_access": true,
+      "users": []
+    },
+    "http": {
+      "enabled": true,
+      "port": 8080,
+      "document_root": "/web",
+      "directory_listing": true,
+      "file_download": true,
+      "upload_enabled": false
+    },
+    "ssh": {
+      "enabled": false,
+      "port": 22,
+      "password_auth": false,
+      "key_auth": true
+    }
+  },
+  "security": {
+    "firewall_enabled": true,
+    "allowed_ports": [22, 80, 445, 8080],
+    "block_unknown": false
+  }
+}

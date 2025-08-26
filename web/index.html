@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USB Bridge - Web Interface</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%232196F3'><path d='M12 2L2 7v10c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.45 9-11V7l-10-5z'/></svg>">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-content">
+                <h1 class="logo">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2L2 7v10c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.45 9-11V7l-10-5z"/>
+                    </svg>
+                    USB Bridge
+                </h1>
+                <div class="status-indicators">
+                    <div class="status-item" id="usbStatus">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M15 7v4h1v2h-3V5h2l-3-4-3 4h2v8H8v-2h1V7H4v2h1v2h3v8H6l3 4 3-4H9v-8h3v2h-1v4h5V7h-1z"/>
+                        </svg>
+                        <span>USB</span>
+                        <div class="status-dot offline"></div>
+                    </div>
+                    <div class="status-item" id="networkStatus">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.07 2.93 1 9zm8 8l3 3 3-3c-1.65-1.66-4.34-1.66-6 0zm-4-4l2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z"/>
+                        </svg>
+                        <span>Network</span>
+                        <div class="status-dot offline"></div>
+                    </div>
+                    <div class="status-item" id="storageStatus">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v8l-2.5-1.5L6 12V4z"/>
+                        </svg>
+                        <span>Storage</span>
+                        <div class="status-dot offline"></div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="main">
+            <div class="dashboard">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>System Status</h2>
+                        <button class="refresh-btn" onclick="refreshStatus()">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="card-content">
+                        <div class="status-grid">
+                            <div class="status-card">
+                                <div class="status-label">USB Hosts</div>
+                                <div class="status-value" id="usbHostCount">0</div>
+                                <div class="status-description">Connected</div>
+                            </div>
+                            <div class="status-card">
+                                <div class="status-label">Network</div>
+                                <div class="status-value" id="networkStatusText">Offline</div>
+                                <div class="status-description">Connection</div>
+                            </div>
+                            <div class="status-card">
+                                <div class="status-label">Storage</div>
+                                <div class="status-value" id="storageCapacity">0 GB</div>
+                                <div class="status-description">Available</div>
+                            </div>
+                            <div class="status-card">
+                                <div class="status-label">Uptime</div>
+                                <div class="status-value" id="systemUptime">--:--:--</div>
+                                <div class="status-description">Hours</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2>File Browser</h2>
+                        <div class="path-display" id="currentPath">/</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="file-browser">
+                            <div class="browser-toolbar">
+                                <button class="btn btn-secondary" onclick="navigateUp()" id="backBtn" disabled>
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.42-1.41L7.83 13H20v-2z"/>
+                                    </svg>
+                                    Back
+                                </button>
+                                <button class="btn btn-secondary" onclick="refreshFiles()">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/>
+                                    </svg>
+                                    Refresh
+                                </button>
+                            </div>
+                            <div class="file-list" id="fileList">
+                                <div class="loading">Loading files...</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Recent Activity</h2>
+                        <select id="activityFilter" onchange="filterActivity()">
+                            <option value="all">All Events</option>
+                            <option value="created">Created</option>
+                            <option value="modified">Modified</option>
+                            <option value="deleted">Deleted</option>
+                        </select>
+                    </div>
+                    <div class="card-content">
+                        <div class="activity-list" id="activityList">
+                            <div class="loading">Loading activity...</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <div class="footer-content">
+                <p>&copy; 2025 USB Bridge System. Built for BigTechTree Pi V1.2.1</p>
+                <div class="footer-links">
+                    <a href="#" onclick="showSettings()">Settings</a>
+                    <a href="#" onclick="showLogs()">Logs</a>
+                    <a href="#" onclick="showAbout()">About</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Settings Modal -->
+    <div class="modal" id="settingsModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Settings</h3>
+                <button class="modal-close" onclick="closeModal('settingsModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="settings-section">
+                    <h4>Network Services</h4>
+                    <label class="switch">
+                        <input type="checkbox" id="smbEnabled">
+                        <span class="slider"></span>
+                        SMB/CIFS Sharing
+                    </label>
+                    <label class="switch">
+                        <input type="checkbox" id="httpEnabled">
+                        <span class="slider"></span>
+                        HTTP File Server
+                    </label>
+                </div>
+                <div class="settings-section">
+                    <h4>USB Hosts</h4>
+                    <label class="switch">
+                        <input type="checkbox" id="usbHost1Enabled">
+                        <span class="slider"></span>
+                        USB Host 1
+                    </label>
+                    <label class="switch">
+                        <input type="checkbox" id="usbHost2Enabled">
+                        <span class="slider"></span>
+                        USB Host 2
+                    </label>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" onclick="saveSettings()">Save</button>
+                <button class="btn btn-secondary" onclick="closeModal('settingsModal')">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

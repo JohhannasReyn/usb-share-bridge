@@ -1,0 +1,42 @@
+{
+  "system": {
+    "device_name": "USB Bridge Device",
+    "version": "1.0.0",
+    "auto_start": true,
+    "log_level": "INFO"
+  },
+  "usb": {
+    "max_hosts": 2,
+    "host1": {
+      "enabled": true,
+      "device_path": "/dev/usb1",
+      "mount_point": "/mnt/usb1"
+    },
+    "host2": {
+      "enabled": true,
+      "device_path": "/dev/usb2",
+      "mount_point": "/mnt/usb2"
+    },
+    "auto_mount": true,
+    "file_system_types": ["ntfs", "fat32", "exfat", "ext4"]
+  },
+  "storage": {
+    "mount_point": "/mnt/usb_bridge",
+    "monitor_interval": 5,
+    "cache_thumbnails": true,
+    "max_cache_size": 104857600
+  },
+  "display": {
+    "width": 480,
+    "height": 320,
+    "brightness": 80,
+    "timeout": 300,
+    "orientation": "landscape"
+  },
+  "logging": {
+    "max_file_size": 10485760,
+    "max_files": 5,
+    "log_rotation": true,
+    "console_output": true
+  }
+}
