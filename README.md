@@ -799,32 +799,33 @@ I've created a comprehensive USB bridge system for a BigTechTree Pi V1.2.1 with 
 The system is production-ready with proper error handling, logging, configuration management, and documentation. All files are designed to work together as a cohesive embedded system specifically optimized for the hardware platform.
 
 
-// Folder structure with reasoning:
+```bash
+# Folder structure with reasoning:
 usb-share-bridge/
 ├── include/
 │   ├── core/
-│   │   ├── UsbBridge.hpp            // Main Controller, contains: `mainLoop`, and threads
-│   │   ├── StorageManager.hpp       // Storage monitoring and manager
-│   │   ├── HostController.hpp       // Host access connection status and request controller
-│   │   ├── MutexLocker.hpp          // Mutex ensures sole client r/w access (via usb or network)
-│   │   ├── FileChangeLogger.hpp     // File/Folder activity log
-│   │   └── ConfigManager.hpp        // Network/System/UI configuration manager (json config files)
+│   │   ├── UsbBridge.hpp            # Main Controller, contains: `mainLoop`, and threads
+│   │   ├── StorageManager.hpp       # Storage monitoring and manager
+│   │   ├── HostController.hpp       # Host access connection status and request controller
+│   │   ├── MutexLocker.hpp          # Mutex ensures sole client r/w access (via usb or network)
+│   │   ├── FileChangeLogger.hpp     # File/Folder activity log
+│   │   └── ConfigManager.hpp        # Network/System/UI configuration manager (json config files)
 │   ├── network/
-│   │   ├── NetworkManager.hpp       // WiFi/Ethernet handling
-│   │   ├── SmbServer.hpp            // SMB/CIFS server
-│   │   └── HttpServer.hpp           // Web interface server
+│   │   ├── NetworkManager.hpp       # WiFi/Ethernet handling
+│   │   ├── SmbServer.hpp            # SMB/CIFS server
+│   │   └── HttpServer.hpp           # Web interface server
 │   ├── hardware/
-│   │   ├── DisplayDriver.hpp        // TFT display abstraction
-│   │   ├── TouchDriver.hpp          // Touch input handling
-│   │   └── LedController.hpp        // Status LEDs
+│   │   ├── DisplayDriver.hpp        # TFT display abstraction
+│   │   ├── TouchDriver.hpp          # Touch input handling
+│   │   └── LedController.hpp        # Status LEDs
 │   ├── gui/
 │   │   ├── GuiManager.hpp
-│   │   ├── Screen.hpp               // Base screen class
-│   │   └── Widgets.hpp              // Custom widgets
+│   │   ├── Screen.hpp               # Base screen class
+│   │   └── Widgets.hpp              # Custom widgets
 │   └── utils/
-│       ├── Logger.hpp               // Centralized logging
-│       ├── Timer.hpp                // Timer utilities
-│       └── FileUtils.hpp            // File operations
+│       ├── Logger.hpp               # Centralized logging
+│       ├── Timer.hpp                # Timer utilities
+│       └── FileUtils.hpp            # File operations
 ├── src/
 │   ├── main.cpp
 │   ├── core/
@@ -848,32 +849,32 @@ usb-share-bridge/
 │   │   │   ├── ScreenFileExplorer.cpp
 │   │   │   ├── ScreenLogViewer.cpp
 │   │   │   ├── ScreenSettings.cpp
-│   │   │   └── ScreenNetwork.cpp     // Network configuration
+│   │   │   └── ScreenNetwork.cpp     # Network configuration
 │   │   └── widgets/
-│   │       ├── FileListWidget.cpp    // File browser widget
-│   │       ├── StatusWidget.cpp      // Status display
-│   │       └── ProgressWidget.cpp    // Progress indicators
+│   │       ├── FileListWidget.cpp    # File browser widget
+│   │       ├── StatusWidget.cpp      # Status display
+│   │       └── ProgressWidget.cpp    # Progress indicators
 │   └── utils/
 │       ├── Logger.cpp
 │       ├── Timer.cpp
 │       └── FileUtils.cpp
 ├── config/
-│   ├── system.json                   // System settings
-│   ├── network.json                  // Network configuration
-│   └── ui.json                       // UI preferences
+│   ├── system.json                   # System settings
+│   ├── network.json                  # Network configuration
+│   └── ui.json                       # UI preferences
 ├── data/
 │   ├── recent_activity.json
-│   ├── logs/                         // Log files
+│   ├── logs/                         # Log files
 │   │   ├── system.log
 │   │   ├── network.log
 │   │   └── access.log
-│   └── cache/                        // Thumbnail cache
+│   └── cache/                        # Thumbnail cache
 ├── scripts/
 │   ├── start_nas.sh
-│   ├── mount_drive.sh                // Drive mounting
-│   ├── setup_network.sh              // Network setup
-│   └── watchdog.sh                   // System monitoring
-├── web/                              // Web interface assets
+│   ├── mount_drive.sh                # Drive mounting
+│   ├── setup_network.sh              # Network setup
+│   └── watchdog.sh                   # System monitoring
+├── web/                              # Web interface assets
 │   ├── index.html
 │   ├── css/
 │   │   └── style.css
@@ -881,9 +882,10 @@ usb-share-bridge/
 │       └── app.js
 ├── lvgl/
 │   └── [submodule or lib]
-├── CMakeLists.txt                    // Build system
-├── platformio.ini                    // PlatformIO config
-
+├── CMakeLists.txt                    # Build system
+├── platformio.ini                    # PlatformIO config
 └── README.md
+```
+
 
 
