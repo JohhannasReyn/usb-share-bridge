@@ -1,6 +1,8 @@
 # USB Share Bridge for BigTechTree Pi V1.2.1
 
-This project has been designed, built, and deployed entirely by myself, Johhannas Reyn, and is free for anyone to use under the MIT LICENSE, I only ask that you please properly cite me as the author.
+*by Johhannas Reyn*
+
+This project is free for anyone to use under the MIT LICENSE.
 
 A comprehensive USB storage bridge system that enables multiple computers to simultaneously access external USB storage devices through USB connections and network sharing. Built specifically for the BigTechTree Pi V1.2.1 with integrated 4.0" TFT touchscreen interface.
 
@@ -883,4 +885,5 @@ usb-share-bridge/
 ├── platformio.ini                    // PlatformIO config
 
 └── README.md
+
 
