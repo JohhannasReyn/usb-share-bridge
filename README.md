@@ -240,10 +240,10 @@ A comprehensive USB storage bridge system that enables multiple computers to sim
     # Create and run dependency installer
     nano install_dependencies.sh
     ```
-    Copy the CB1 dependency installer script (provided earlier), then:
+    Copy the CB1 dependency installer script (dependencies.sh), then:
     ```bash
-    chmod +x install_dependencies.sh
-    ./install_dependencies.sh
+    chmod +x dependencies.sh
+    ./dependencies.sh
     ```
 
 11. **Enable Required Kernel Modules**
@@ -886,6 +886,7 @@ usb-share-bridge/
 ├── platformio.ini                    # PlatformIO config
 └── README.md
 ```
+
 
 
 
