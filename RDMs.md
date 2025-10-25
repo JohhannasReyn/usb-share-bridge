@@ -40,9 +40,9 @@ sudo make install
 rsync -av --exclude='.git' --exclude='build' \
   /path/to/usb-share-bridge/ pi@<board-ip>:~/usb-share-bridge/
 
-# Option B: Use git (if you have a repo)
+# Option B: Use git
 # On the board:
-git clone <your-repo-url> ~/usb-share-bridge
+git clone https://github.com/JohhannasReyn/usb-share-bridge.git ~/usb-share-bridge
 cd ~/usb-share-bridge
 ```
 
@@ -188,5 +188,6 @@ bridge-restart   # Restart service
 2. **Use the deployment script** - Automates everything
 3. **Setup VS Code Remote** - Best development experience
 4. **Use cross-compilation later** - When you need faster builds
+
 
 The SSH method with the deployment script is your best bet for getting started quickly and maintaining a good development workflow!
