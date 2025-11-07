@@ -1,0 +1,97 @@
+{
+  "system": {
+    "name": "USB Share Bridge",
+    "version": "2.0.0",
+    "mode": "board_managed"
+  },
+  "buffer": {
+    "path": "/data/buffer",
+    "maxSize": 10737418240,
+    "largeFileThreshold": 5368709120,
+    "comment_maxSize": "10GB in bytes",
+    "comment_largeFileThreshold": "5GB in bytes - files larger than this require direct access"
+  },
+  "queue": {
+    "enabled": true,
+    "maxQueueSize": 1000,
+    "operationCleanupAge": 86400,
+    "comment_operationCleanupAge": "24 hours in seconds"
+  },
+  "storage": {
+    "mountPoint": "/mnt/usbdrive",
+    "autoMount": true,
+    "filesystem": "auto",
+    "mountOptions": "defaults,nofail"
+  },
+  "access": {
+    "defaultMode": "board_managed",
+    "directAccessTimeout": 300,
+    "comment_directAccessTimeout": "5 minutes in seconds",
+    "maxDirectAccessDuration": 1800,
+    "comment_maxDirectAccessDuration": "30 minutes in seconds"
+  },
+  "hosts": {
+    "usb": {
+      "host1": {
+        "enabled": true,
+        "name": "USB Host 1",
+        "device": "/dev/ttyUSB0"
+      },
+      "host2": {
+        "enabled": true,
+        "name": "USB Host 2",
+        "device": "/dev/ttyUSB1"
+      }
+    }
+  },
+  "network": {
+    "smb": {
+      "enabled": true,
+      "shareName": "USB_SHARE",
+      "workgroup": "WORKGROUP",
+      "description": "USB Bridge Shared Storage",
+      "guestAccess": true,
+      "readOnly": false,
+      "bufferOperations": true
+    },
+    "http": {
+      "enabled": true,
+      "port": 8080,
+      "apiEnabled": true,
+      "fileServerEnabled": true,
+      "bufferOperations": true
+    },
+    "wifi": {
+      "enabled": true,
+      "ssid": "",
+      "password": ""
+    },
+    "ethernet": {
+      "enabled": true,
+      "dhcp": true
+    }
+  },
+  "logging": {
+    "path": "/data/logs",
+    "level": "info",
+    "maxFileSize": 10485760,
+    "maxFiles": 10,
+    "fileChanges": true,
+    "operations": true,
+    "access": true
+  },
+  "maintenance": {
+    "cleanupInterval": 300,
+    "comment_cleanupInterval": "5 minutes in seconds",
+    "healthCheckInterval": 60,
+    "comment_healthCheckInterval": "1 minute in seconds",
+    "autoCleanup": true
+  },
+  "gui": {
+    "enabled": true,
+    "showQueueStatus": true,
+    "showBufferUsage": true,
+    "refreshInterval": 1000,
+    "comment_refreshInterval": "1 second in milliseconds"
+  }
+}
